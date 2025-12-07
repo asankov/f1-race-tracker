@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Race, RaceWithStatus, AttendanceStatus, racesByYear } from "@/data/races";
+import { Race, RaceWithStatus, AttendanceStatus, races } from "@/data/races";
 
 const STORAGE_KEY = "f1-race-tracker";
 
@@ -7,7 +7,7 @@ interface StoredData {
   [raceId: string]: AttendanceStatus;
 }
 
-export const useRaceTracker = (year: number) => {
+export const useRaceTracker = () => {
   const [racesWithStatus, setRacesWithStatus] = useState<RaceWithStatus[]>([]);
 
   // Load data from localStorage
@@ -31,7 +31,6 @@ export const useRaceTracker = (year: number) => {
 
   // Initialize races with status
   useEffect(() => {
-    const races = racesByYear[year] || [];
     const storedData = loadStoredData();
 
     const withStatus: RaceWithStatus[] = races.map((race) => ({
@@ -40,7 +39,7 @@ export const useRaceTracker = (year: number) => {
     }));
 
     setRacesWithStatus(withStatus);
-  }, [year, loadStoredData]);
+  }, [loadStoredData]);
 
   // Update race status
   const updateStatus = useCallback(

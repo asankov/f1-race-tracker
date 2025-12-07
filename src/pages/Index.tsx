@@ -1,32 +1,22 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
-import { YearSelector } from "@/components/YearSelector";
 import { StatsPanel } from "@/components/StatsPanel";
 import { RaceCard } from "@/components/RaceCard";
 import { useRaceTracker } from "@/hooks/useRaceTracker";
 
-const AVAILABLE_YEARS = [2024, 2025, 2026];
-
 const Index = () => {
-  const [selectedYear, setSelectedYear] = useState(2025);
-  const { races, updateStatus } = useRaceTracker(selectedYear);
+  const { races, updateStatus } = useRaceTracker();
 
   return (
     <div className="min-h-screen bg-background carbon-texture">
       <div className="container max-w-6xl mx-auto px-4 pb-16">
         <Header />
-        
-        <YearSelector
-          years={AVAILABLE_YEARS}
-          selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
-        />
 
         <StatsPanel races={races} />
 
         <motion.div
-          key={selectedYear}
+          key={2026}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
