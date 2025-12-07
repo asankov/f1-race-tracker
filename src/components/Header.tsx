@@ -29,7 +29,7 @@ export const Header = () => {
           className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-2"
         >
           <span className="text-gradient-f1">Our F1</span>{" "}
-          <span className="text-primary">Journey</span>
+          <span className="text-primary">Journey ❤️</span>
         </motion.h1>
 
         <motion.p
