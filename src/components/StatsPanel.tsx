@@ -43,6 +43,8 @@ export const StatsPanel = ({ races }: StatsPanelProps) => {
     },
   ];
 
+  const attendedRate = total > 0 ? (attended / total) * 100 : 0;
+  const plannedRate = total > 0 ? (planned / total) * 100 : 0;
   const attendanceRate = total > 0 ? Math.round(((attended + planned) / total) * 100) : 0;
 
   return (
@@ -80,16 +82,23 @@ export const StatsPanel = ({ races }: StatsPanelProps) => {
           <span className="text-sm font-semibold text-foreground">Season Coverage</span>
           <span className="text-sm font-black text-primary">{attendanceRate}%</span>
         </div>
-        <div className="h-2 bg-muted rounded-full overflow-hidden">
+        <div className="h-2 bg-muted rounded-full overflow-hidden relative">
           <motion.div
             initial={{ width: 0 }}
-            animate={{ width: `${attendanceRate}%` }}
+            animate={{ width: `${attendedRate}%` }}
             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            className="h-full f1-gradient rounded-full"
+            className="h-full bg-red-500 rounded-full absolute left-0"
+          />
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${plannedRate}%` }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            className="h-full bg-yellow-500 rounded-full absolute"
+            style={{ left: `${attendedRate}%` }}
           />
         </div>
         <p className="text-xs text-muted-foreground mt-2">
-          {attended + planned} of {total} races attended or planned
+          {attended} of {total} races attended, {planned} planned
         </p>
       </div>
     </motion.div>
