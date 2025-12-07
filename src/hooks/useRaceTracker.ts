@@ -31,15 +31,12 @@ export const useRaceTracker = () => {
 
   // Initialize races with status
   useEffect(() => {
-    const storedData = loadStoredData();
-
     const withStatus: RaceWithStatus[] = races.map((race) => ({
       ...race,
-      status: storedData[race.id] || "not-attended",
     }));
 
     setRacesWithStatus(withStatus);
-  }, [loadStoredData]);
+  }, []);
 
   // Update race status
   const updateStatus = useCallback(
