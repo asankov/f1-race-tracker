@@ -32,18 +32,6 @@ const Index = () => {
             ))}
           </div>
         </motion.div>
-
-        {/* Footer */}
-        <motion.footer
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="mt-16 text-center text-muted-foreground text-sm"
-        >
-          <p className="uppercase tracking-widest">
-            Data saved locally in your browser
-          </p>
-        </motion.footer>
       </div>
     </div>
   );
