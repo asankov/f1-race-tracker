@@ -78,7 +78,7 @@ export const RaceCard = ({ race, onStatusChange, index }: RaceCardProps) => {
             <Calendar className="w-3.5 h-3.5 text-primary" />
             <span>{formattedDate}</span>
           </div>
-          <div className="h-5">
+          <div className="h-1">
             {race.status === 'attended' && <div className="font-bold text-green-600">ATTENDED IN {race.in}!</div>}
             {race.status === 'planned' && <div className="font-bold text-yellow-600">PLANNED IN {race.in}!</div>}
           </div>
